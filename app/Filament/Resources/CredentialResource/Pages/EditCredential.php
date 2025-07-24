@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\GroupResource\Pages;
+namespace App\Filament\Resources\CredentialResource\Pages;
 
-use App\Filament\Resources\GroupResource;
+use App\Filament\Resources\CredentialResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditGroup extends EditRecord
+class EditCredential extends EditRecord
 {
-    protected static string $resource = GroupResource::class;
+    protected static string $resource = CredentialResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -16,6 +16,7 @@ class EditGroup extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
     protected function afterSave(): void
     {
         $this->redirect(static::$resource::getUrl('index'));
