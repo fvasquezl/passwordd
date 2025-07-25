@@ -12,7 +12,7 @@ class Group extends Model
     /** @use HasFactory<\Database\Factories\GroupFactory> */
     use HasFactory;
 
-    protected $fillable = ["name"];
+    protected $fillable = ["name", "owner_id", "owner_type"];
 
     public function owner()
     {
