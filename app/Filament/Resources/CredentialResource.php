@@ -18,6 +18,7 @@ use Dvarilek\FilamentTableSelect\Enums\SelectionModalActionPosition;
 class CredentialResource extends Resource
 {
 
+
     protected static ?string $model = Credential::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -84,6 +85,11 @@ class CredentialResource extends Resource
         ];
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', auth()->id());
+    }
+
     public static function getPages(): array
     {
         return [
@@ -92,6 +98,4 @@ class CredentialResource extends Resource
             'edit' => Pages\EditCredential::route('/{record}/edit'),
         ];
     }
-
-    
 }

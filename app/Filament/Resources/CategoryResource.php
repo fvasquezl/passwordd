@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoryResource extends Resource
 {
-    
 
     protected static ?string $model = Category::class;
 
@@ -59,6 +58,12 @@ class CategoryResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', auth()->id());
     }
 
     public static function getPages(): array

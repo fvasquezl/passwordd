@@ -11,7 +11,7 @@ class CreateCredential extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-                $data['owner_id'] = auth()->id();
+        $data['owner_id'] = auth()->id();
         $data['owner_type'] = auth()->user()->getMorphClass();
 
         return $data;

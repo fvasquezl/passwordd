@@ -17,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 
 class GroupResource extends Resource
 {
+
     protected static ?string $model = Group::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -81,6 +82,20 @@ class GroupResource extends Resource
             //
         ];
     }
+
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+        if ($user) {
+            return parent::getEloquentQuery()->whereHas('users', function ($query) use ($user) {
+                $query->where('users.id', $user->id);
+            });
+        }
+        return parent::getEloquentQuery();
+    }
+
+
 
     public static function getPages(): array
     {

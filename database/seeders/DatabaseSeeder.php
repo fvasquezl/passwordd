@@ -33,7 +33,27 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        // You can add more seeders here if needed
-        // $this->call(AnotherSeeder::class);
+        $categoryNumber = 1;
+        foreach ($users as $user) {
+            for ($j = 1; $j <= 5; $j++) {
+                $user->categories()->create([
+                    'name' => 'Categoría ' . $categoryNumber,
+                    'description' => 'Descripción de la categoría ' . $categoryNumber,
+                ]);
+                $categoryNumber++;
+            }
+        }
+
+        // Crear 10 grupos: 5 para el primer usuario y 5 para el segundo usuario
+        $groupNumber = 1;
+        foreach ($users as $user) {
+            for ($i = 1; $i <= 5; $i++) {
+                $user->groups()->create([
+                    'name' => 'Grupo ' . $groupNumber,
+                    'description' => 'Descripción del grupo ' . $groupNumber,
+                ]);
+                $groupNumber++;
+            }
+        }
     }
 }
