@@ -46,14 +46,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function groups()
-    {
-        return $this->belongsToMany(Group::class);
-    }
-
-
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function credentials()
+    {
+        return $this->hasMany(Credential::class);
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class);
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Credential extends Model
 {
-    /** @use HasFactory<\Database\Factories\CredentialFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -15,16 +14,16 @@ class Credential extends Model
         'password',
         'description',
         'category_id',
-        'user_id',
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

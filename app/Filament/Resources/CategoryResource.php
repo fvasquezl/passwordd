@@ -15,11 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoryResource extends Resource
 {
-    public static function mutateFormDataBeforeCreate(array $data): array
-    {
-        $data['user_id'] = auth()->id();
-        return $data;
-    }
+    
 
     protected static ?string $model = Category::class;
 
